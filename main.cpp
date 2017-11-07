@@ -20,7 +20,8 @@ using namespace std;
 		cout << "Drzwi <1>" << endl;
 		cout << "Stary Obraz <2>" << endl;
 		cout << "Biurko <3>" << endl;
-		cout << "Szafa <4>" ;
+		cout << "Szafa <4>" << endl;
+		cout << "Wyjscie <Q>" << endl;
 		
 		for(;;)
 		
@@ -35,16 +36,23 @@ using namespace std;
 		{
 			case '1':
 				cout << "> Podchodzisz do drzwi";
+			break;
 				case '2':
-					cout << "> Podchodzisz do starego obrazu";	
+					cout << "> Podchodzisz do starego obrazu";
+			break;	
 					case '3':
 						cout << "> Podchodzisz do biurka";
+			break;
 						case '4':
 							cout << "> Podchodzisz do szafy";
-					
+			break;
+						case 'q':
+							cout << "> Wychodzisz z gry";
+							exit(0);
+			break;
 		    default: cout<< "nie ma takiej opcji";
 		}
 }
 
 		return (0);
-	}
+}
