@@ -15,17 +15,16 @@ using namespace std;
 	{
 		
 		cout << "  |              __  __   _   _   ______    _____   _____   _    _   __  __   |" << endl;
-		cout << "  |      /\     |  \/  | | \ | | |  ____|  / ____| |_   _| | |  | | |  \/  |  |" << endl;
-		cout << "  |     /  \    | \  / | |  \| | | |__    | (___     | |   | |  | | | \  / |  |" << endl;
-		cout << "  |    / /\ \   | |\/| | | . ` | |  __|    \___ \    | |   | |  | | | |\/| |  |" << endl;
-		cout << "  |   / ____ \  | |  | | | |\  | | |____   ____) |  _| |_  | |__| | | |  | |  |" << endl;
-		cout << "  |  /_/    \_\ |_|  |_| |_| \_| |______| |_____/  |_____|  \____/  |_|  |_|  |" << endl;
+		cout << "  |      /\\     |  \\/  | | \\ | | |  ____|  / ____| |_   _| | |  | | |  \\/  |  |" << endl;
+		cout << "  |     /  \\    | \\  / | |  \\| | | |__    | (___     | |   | |  | | | \\  / |  |" << endl;
+		cout << "  |    / /\\ \\   | |\\/| | | . ` | |  __|    \\___ \\    | |   | |  | | | |\\/| |  |" << endl;
+		cout << "  |   / ____ \\  | |  | | | |\\  | | |____   ____) |  _| |_  | |__| | | |  | |  |" << endl;
+		cout << "  |  /_/    \\_\\ |_|  |_| |_| \\_| |______| |_____/  |_____|  \\____/  |_|  |_|  |" << endl;
 		cout << "  |___________________________________________________________________________|"<<endl;
 		cout << "   \\                                                                         /"<<endl;
 		cout << "    \\             Bartlomiej Ciolkosz All Rights Reserverd 2017.            /"<<endl;
 		cout << "     \\_____________________________________________________________________/"<<endl<<endl<<endl;
 		cout << "                     |   Nacisnij S, aby zaczac gre   |"<<endl;
-		cout << "                     |   Nacisnij L, aby wczytac gre  |"<<endl;
 		cout << "                     |   Nacisnij Q, aby wyjsc z gry  |"<<endl;
 		
 		
@@ -35,11 +34,8 @@ using namespace std;
 		{
 			case 's':
 			break;
-				case 'l':
-					cout << "# proste menu wczytywania gry"<<endl;
-			break;	
-					case 'q':
-						exit(0);
+				case 'q':
+					exit(0);
 			break;
 		    default: cout<< "nie ma takiej opcji";
 		}
