@@ -50,6 +50,7 @@ using namespace std;
 		cout << "Stary Obraz <2>" << endl;
 		cout << "Biurko <3>" << endl;
 		cout << "Szafa <4>" <<endl;
+		cout << "Instrukcja gry <I>";
 				
 				cout<<endl<<endl;
 				cout << "Wybierz rzecz do ktorej chcesz podejsc :"<< endl << endl;
@@ -59,7 +60,7 @@ using namespace std;
 		switch (wybor)
 		{
 			case '1':
-				cout << "> Podchodzisz do drzwi"; // PRZYPADEK DRZWI//
+			cout << "> Podchodzisz do drzwi"; // PRZYPADEK DRZWI//
 				
 				DR:
 				
@@ -97,12 +98,14 @@ using namespace std;
 		}		
 				
 			break;
-				case '2':
-					cout << "> Podchodzisz do starego obrazu"; // PRZYPADEK OBRAZU //
+			case '2':
+			out << "> Podchodzisz do starego obrazu"; // PRZYPADEK OBRAZU //
 					
-					OB:
+				OB:
+						
+				cout<<endl<<endl;
 					
-							wybor = getch();
+				wybor = getch();
 				switch (wybor)
 		{
 				case 'a':
@@ -131,12 +134,14 @@ using namespace std;
 				break;		
 		}
 			break;	
-					case '3':
-						cout << "> Podchodzisz do biurka"; // PRZYPADEK BIURKA //
+				case '3':
+				cout << "> Podchodzisz do biurka"; // PRZYPADEK BIURKA //
 						
 				BI:	
+				
+				cout<<endl<<endl;
 						
-								wybor = getch();
+				wybor = getch();
 				switch (wybor)
 		{
 				case 'a':
@@ -163,10 +168,10 @@ using namespace std;
 				break;		
 		}
 			break;
-						case '4':
-							cout << "> Podchodzisz do szafy"; // PRZYPADEK SZAFY //
+				case '4':
+				cout << "> Podchodzisz do szafy"; // PRZYPADEK SZAFY //
 							
-									wybor = getch();
+				wybor = getch();
 				switch (wybor)
 		{
 				case 'a':
@@ -192,6 +197,26 @@ using namespace std;
 				break;		
 		}
 			break;
+			
+		case 'i':
+					cout << endl << endl <<endl;
+					cout << "                                _______ "<<endl;
+					cout << "                               |       |"<<endl;
+					cout << "                               |   W   | --- Powrot"<<endl;
+					cout << "                               |_______|"<<endl;
+					
+					cout << "                        _______   _______   _______ "<<endl;
+					cout << "                       |       | |       | |       |"<<endl;
+					cout << "                       |   A   | |   S   | |   D   |"<<endl;
+					cout << "                       |_______| |_______| |_______|"<<endl;
+					cout << "                         /           |           \\" <<endl;
+					cout << "                        /    Uzycie przedmiotu    \\" <<endl;
+					cout << "                       /                         Wez przedmiot " << endl;
+					cout << "          Zbadaj przedmiot" << endl << endl << endl << endl;
+					goto P1;		
+			break;	
+			
+							getchar();
 		    default: cout<< "nie ma takiej opcji";
 		}
 
