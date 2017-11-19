@@ -93,13 +93,15 @@ using namespace std;
 				case 'w':
 				cout << "> Odchodzisz od przedmiotu";
 				goto P1;
-				break;	
+				break;
+				
+				default: cout<< "nie ma takiej opcji";	
 					
 		}		
 				
 			break;
 			case '2':
-			out << "> Podchodzisz do starego obrazu"; // PRZYPADEK OBRAZU //
+			cout << "> Podchodzisz do starego obrazu"; // PRZYPADEK OBRAZU //
 					
 				OB:
 						
@@ -131,7 +133,9 @@ using namespace std;
 				case 'w':
 				cout << "> Odchodzisz od przedmiotu";
 				goto P1;
-				break;		
+				break;
+				
+				default: cout<< "nie ma takiej opcji";		
 		}
 			break;	
 				case '3':
@@ -165,11 +169,17 @@ using namespace std;
 				case 'w':
 				cout << "> Odchodzisz od przedmiotu";
 				goto P1;
-				break;		
+				break;
+				
+				default: cout<< "nie ma takiej opcji";		
 		}
 			break;
 				case '4':
 				cout << "> Podchodzisz do szafy"; // PRZYPADEK SZAFY //
+				
+				SZ:
+					
+				cout<<endl<<endl;
 							
 				wybor = getch();
 				switch (wybor)
@@ -177,6 +187,7 @@ using namespace std;
 				case 'a':
 					
 				cout << " Bardzo stare drzwi wydaja sie byc zamkniete";
+				goto SZ;
 				break;
 				
 				case 's':
@@ -185,16 +196,21 @@ using namespace std;
 				cout << " > Uzyto klucza drzwi sie otwieraja";
 				} else
 				cout<< " > Nie mozna otworzyc drzwi";
+				goto SZ;
 				break;
 				
 				case 'd':
 				cout << " > Nie ma tutaj nic do zebrania";
+				goto SZ;
 				break;
 				
 				case 'w':
 				cout << "> Odchodzisz od przedmiotu";
 				goto P1;
-				break;		
+				break;
+				
+				default: cout<< "nie ma takiej opcji";
+						
 		}
 			break;
 			
@@ -216,7 +232,6 @@ using namespace std;
 					goto P1;		
 			break;	
 			
-							getchar();
 		    default: cout<< "nie ma takiej opcji";
 		}
 
