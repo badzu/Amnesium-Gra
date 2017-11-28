@@ -44,6 +44,50 @@ using namespace std;
 		    goto MENU;
 		    
 		}
+		system("cls");
+		Sleep (100); cout << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << endl;
+		Sleep (100); cout << "+     _     __  __   _  _   ___   ___   ___   _   _   __  __      /-----------+" << endl;
+		Sleep (100); cout << "+    /_\\   |  \\/  | | \\| | | __| / __| |_ _| | | | | |  \\/  |    /------------+" << endl;
+		Sleep (100); cout << "+   / _ \\  | |\\/| | | .` | | _|  \\__ \\  | |  | |_| | | |\\/| |   /-------------+" << endl;
+		Sleep (100); cout << "+  /_/ \\_\\ |_|  |_| |_|\\_| |___| |___/ |___|  \\___/  |_|  |_|  /--------------+" << endl;
+		Sleep (100); cout << "+                                                             /---------------+" << endl;
+		Sleep (100); cout << "+-----------------------------------------------------------------------------+" << endl;
+		Sleep (100); cout << "+         ___ _  _   _   ___ _____ ___ ___      _           /-----------------+" << endl;
+		Sleep (100); cout << "+        / __| || | /_\\ | _ \\_   _| __| _ \\    / |         /------------------+" << endl;
+		Sleep (100); cout << "+       | (__| __ |/ _ \\|  _/ | | | _||   /    | |        /-------------------+" << endl;
+		Sleep (100); cout << "+        \\___|_||_/_/ \\_\\_|   |_| |___|_|_\\    |_|       /--------------------+" << endl;
+		Sleep (100); cout << "+                                                       /---------------------+" << endl;
+		Sleep (100); cout << "+-----------------------------------------------------------------------------+" << endl;
+		Sleep (100); cout << "+                           __.--|~|--.__                               ,,;/; +" << endl;
+		Sleep (100); cout << "+                         /~     | |    ;~\\                          ,;;;/;;' +" << endl;
+		Sleep (100); cout << "+                        /|      | |    ;~ \\                      ,;;;;/;;;'  +" << endl;
+		Sleep (100); cout << "+                       |/|      \\_/   ;;;| |                    ,;;;;/;;;;'  +" << endl;
+		Sleep (100); cout << "+                       |/ \\          ;;;/  )                 ,;;;;/;;;;;'    +" << endl;
+		Sleep (100); cout << "+                   ___ | ______     ;_____ |___....__      ,;;;;/;;;;;'      +"<< endl;
+		Sleep (100); cout << "+              ___.-~ \\(| \\  \\.\\ \\__/ /./ /:|)~   ~   \\   ,;;;;/;;;;;'        +" << endl;
+		Sleep (100); cout << "+         /~~~    ~\\    |  ~-.     |   .-~: |//  _.-~~--,;;;;/;;;;;'          +" << endl;
+		Sleep (100); cout << "+        (.-~___     \\.'|    | /-.__.-\\|::::| //~     ,;;;;/;;;;;'            +" << endl;
+		Sleep (100); cout << "+        /      ~~--._ \\|   /          `\\:: |/      ,;;;;/;;;;;'              +" << endl;
+		Sleep (100); cout << "+     .-|             ~~|   |  /V----V\\ |:  |     ,;;;;/;;;;;' \\              +" << endl;
+		Sleep (100); cout << "+    /                   \\  |  ~`^~~^'~ |  /    ,;;;;/;;;;;'    ;             +" << endl;
+		Sleep (100); cout << "+   (        \\             \\|`\\._____./'|/    ,;;;;/;;;;;'      '\\            +" << endl;
+		Sleep (100); cout << "+  / \\        \\                             ,;;;;/;;;;;'     /    |           +" << endl;
+		Sleep (100); cout << "+ |            |                          ,;;;;/;;;;;'      |     |           +" << endl;
+		Sleep (100); cout << "+ |`-._          |                       ,;;;;/;;;;;'              \\          +" << endl;
+		Sleep (100); cout << "+ |             /                      ,;;;;/;;;;;'  \\              \\         +" << endl;
+		Sleep (100); cout << "+-----------------------------------------------------------------------------+" << endl;
+		Sleep (100); cout << "+  _______                                                                    +" << endl;
+		Sleep (100); cout << "+ |       |                                                                   +" << endl;
+		Sleep (100); cout << "+ |   ^   |  --- Chowanie sie przed przeciwnikami, ktorych nie mo¿esz pokonac +" << endl;
+		Sleep (100); cout << "+ |_______|                                                                   +" << endl;
+		Sleep (100); cout << "+-----------------------------------------------------------------------------+" << endl;
+		Sleep (100); cout << "+     >>> >>>      NACISNIJ  DOWOLNY KLAWISZ  ABY ZACZAC GRE      <<< <<<     +" << endl;
+		Sleep (100); cout << "+                                                                             +" << endl;
+		Sleep (100); cout << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << endl;
+		
+		wybor = getch();
+		system("cls");
+	
 		// LVL 1 //
 		cout <<endl<< ">------------------------------{ AMNESIUM LVL1 }-------------------------------<"<<endl<<endl;	
 		cout << " Budzisz sie w zamknietym pomieszczeniu na lozku, twoja glowa bardzo cie boli,\n a obraz poczatkowo wydaje"
@@ -121,6 +165,7 @@ using namespace std;
 				
 				case 'w':
 				cout << " > Odchodzisz od przedmiotu";
+				system("cls");
 				goto P1;
 				break;	
 				
@@ -158,6 +203,7 @@ using namespace std;
 				
 				case 'w':
 				cout << " > Odchodzisz od przedmiotu";
+				system("cls");
 				goto P1;
 				break;	
 				
@@ -195,6 +241,7 @@ using namespace std;
 				
 				case 'w':
 				cout << "> Odchodzisz od przedmiotu";
+				system("cls");
 				goto P1;
 				break;	
 				
@@ -236,6 +283,7 @@ using namespace std;
 				
 			 	case 'w':
 				cout << "> Odchodzisz od przedmiotu";
+				system("cls");
 				goto P1;
 				break;
 				
