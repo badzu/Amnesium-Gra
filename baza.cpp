@@ -27,34 +27,32 @@ using namespace std;
 		cout << "    \\             Bartlomiej Ciolkosz All Rights Reserverd 2017.            /"<<endl;
 		cout << "     \\_____________________________________________________________________/"<<endl<<endl<<endl;
 		cout << "                           ---------------------------"<<endl;
-		if (p==0) cout<<"                           |        > START <        |\n"; else cout<<"                           |          START          |\n";
-		if (p==1) cout<<"                           |       > WCZYTAJ <       |\n"; else cout<<"                           |         WCZYTAJ         |\n";
-		if (p==2) cout<<"                           |      > INSTRUKCJA <     |\n"; else cout<<"                           |        INSTRUKCJA       |\n";
-		if (p==3) cout<<"                           |        > TWORCA <       |\n"; else cout<<"                           |          TWORCA         |\n";
-		if (p==4) cout<<"                           |      > WYJDZ Z GRY <    |\n"; else cout<<"                           |        WYJDZ Z GRY      |\n";
+		if (p==0) cout<<"                           |         > START <       |\n"; else cout<<"                           |           START         |\n";
+		if (p==1) cout<<"                           |      > INSTRUKCJA <     |\n"; else cout<<"                           |        INSTRUKCJA       |\n";
+		if (p==2) cout<<"                           |        > TWORCA <       |\n"; else cout<<"                           |          TWORCA         |\n";
+		if (p==3) cout<<"                           |      > WYJDZ Z GRY <    |\n"; else cout<<"                           |        WYJDZ Z GRY      |\n";
 		cout << "                           ---------------------------"<<endl;
 		wybor=getch();
-		PlaySound(TEXT("choice.wav"),NULL,SND_FILENAME | SND_ASYNC);
 		switch(wybor)
 		{
-			case'w':
+			case 72:
 				if(p==0) break;
-				else {	p--;
+				else { PlaySound(TEXT("choice.wav"),NULL,SND_FILENAME | SND_ASYNC);	p--;
 				break;	}
-			case's':
-				if(p==4) break;
-				else {	p++;
+			case 80:
+				if(p==3) break;
+				else { PlaySound(TEXT("choice.wav"),NULL,SND_FILENAME | SND_ASYNC);	p++;
 				break;	}
-			case'a':
+			case 13:
+				PlaySound(TEXT("choice.wav"),NULL,SND_FILENAME | SND_ASYNC);
 				o=0;
 				break;				
 		}	
 	}
 	if(p==0) {system("cls"); return(0);}
-	//if(p==1) loadgame1();
-	if(p==2) instrukcja();
-	if(p==3) tworca();
-	if(p==4) exit(0);
+	if(p==1) instrukcja();
+	if(p==2) tworca();
+	if(p==3) exit(0);
 	goto MENU;
 	}
 	
@@ -63,7 +61,7 @@ int tworca()
 using namespace std;
 system("cls");
 PlaySound(TEXT("rolldown.wav"),NULL,SND_FILENAME | SND_ASYNC);
-cout << "\n\n\n\n\n\n\n\n\n                                ART DESIGN\n "<<endl;
+cout << "\n\n\n\n\n                                 ART DESIGN\n "<<endl;
 cout << "                             Bartlomiej Ciolkosz\n\n"<<endl;
 cout << "                                 GAME PROJECT\n "<<endl;
 cout << "                             Bartlomiej Ciolkosz\n\n"<<endl;
@@ -100,7 +98,7 @@ int loading1()
 		Sleep (100); cout << "+                       |/|      \\_/   ;;;| |                    ,;;;;/;;;;'   +" << endl;
 		Sleep (100); cout << "+                       |/ \\          ;;;/  )                 ,;;;;/;;;;;'     +" << endl;
 		Sleep (100); cout << "+                   ___ | ______     ;_____ |___....__      ,;;;;/;;;;;'       +"<< endl;
-		Sleep (100); cout << "+              ___.-~ \\(| \\  \\.\\ \\__/ /./ /:|)~   ~   \\   ,;;;;/;;;;;'         +" << endl;
+		Sleep (100); cout << "+              ___.-~ \\(| \\  \\0\\ \\__/ /0/ /:|)~   ~   \\   ,;;;;/;;;;;'         +" << endl;
 		Sleep (100); cout << "+         /~~~    ~\\    |  ~-.     |   .-~: |//  _.-~~--,;;;;/;;;;;'           +" << endl;
 		Sleep (100); cout << "+        (.-~___     \\.'|    | /-.__.-\\|::::| //~     ,;;;;/;;;;;'             +" << endl;
 		Sleep (100); cout << "+        /      ~~--._ \\|   /          `\\:: |/      ,;;;;/;;;;;'               +" << endl;
@@ -114,7 +112,7 @@ int loading1()
 		Sleep (100); cout << "+------------------------------------------------------------------------------+" << endl;
 		Sleep (100); cout << "+  _______                                                                     +" << endl;
 		Sleep (100); cout << "+ |       |                                                                    +" << endl;
-		Sleep (100); cout << "+ |   ^   |  --- Chowanie sie przed przeciwnikami, ktorych nie mozesz pokonac  +" << endl;
+		Sleep (100); cout << "+ |   S   |  --- Odchodzenie od przedmiotow                                    +" << endl;
 		Sleep (100); cout << "+ |_______|                                                                    +" << endl;
 		Sleep (100); cout << "+------------------------------------------------------------------------------+" << endl;
 		Sleep (100); cout << "+     >>> >>> >>>   NACISNIJ DOWOLNY KLAWISZ ABY ZACZAC GRE   <<< <<< <<<      +" << endl;
@@ -127,14 +125,19 @@ int loading1()
 int klodka()
 {
 using namespace std;
-int k;
+int k, kldk;
 char a='0', b='0', c='0';
 
+cout<<"                    Na drzwiach jest wystrugane \n\n";
+cout<<"                         |  8   2   6 |\n";
+cout<<"                         |  7  14   8 |\n";
+cout<<"                         | 49  -6  35 |\n\n";
+cout<<"                     Plus zmienia sie na minus\n\n";
 	if (k!=1) 
 				{
 					for (int i=1; i<=4; i++)
 					{
-						cout<<"\n                           .------------."<<endl;
+						cout<<"                           .------------."<<endl;
 						cout<<"                          / .----------. \\"<<endl;
 						cout<<"                         / /            \\ \\"<<endl;
 						cout<<"                         | |            | |"<<endl;
@@ -168,14 +171,26 @@ char a='0', b='0', c='0';
 					
 					}
 					k=1;
-					cout<<"brawo";
+					PlaySound(TEXT("door.wav"),NULL,SND_FILENAME | SND_ASYNC);
 					
 }	
 else cout<<"Wchodzisz do Pokoju 3";
-return(0);		
+return(kldk=1);		
 }
 
 
+int historyjka()
+{
+using namespace std;
+cout<< " > Wzieto skrawki papieru, z ktorych udalo ci sie zlozyc kawalek notatki \n\n";
+cout<< " Armia krola udala sie na polnoc. Walka tam jednak byla tragiczna w skutkach wiec resztki wojska wrocily na polodnie. "
+"Niestety krolestwo ktore zastali byl pod atakiem barbazyncow. Udali sie wiec na zachod. Przez pare lat zylo im tam sie pieknie"
+", a armia zdazyla sie odbudowac. Ruszyli wiec na wschod. Stoczyli tam kilka zwycieskich walk. Po czym zdecydowali wrocic "
+"z powrotem na zachod\n\n"; getch();
+ cout<<"Wyglada to na szyfr do poruszania dzwignia";
+	
+	return(0);
+}
 
 
 int dzwignia()
@@ -188,7 +203,7 @@ char z1='0', z2, z3, z4, kolo;
 				{
 					for (int i=1; i<=5; i++)
 					{
-						cout<<"     ---"<<endl;
+						cout<<"\n\n     ---"<<endl;
 						cout<<"    | ";cout<<z1;cout<<" |"<<endl;
 						cout<<" ---     ---"<<endl;
 						cout<<"|";cout<<z2;cout<<"         ";cout<<z4;cout<<"|"<<endl;
@@ -201,10 +216,10 @@ char z1='0', z2, z3, z4, kolo;
 						kolo=getch();
 						switch(kolo)
 						{
-							case'w': z1='0', z2='\0', z3='\0', z4='\0';break;
-							case'a': z1='\0', z2='0', z3='\0', z4='\0';break;
-							case's': z1='\0', z2='\0', z3='0', z4='\0';yup1=1;break;
-							case'd': z1='\0', z2='\0', z3='\0', z4='0';break;
+							case's': z1='0', z2='\0', z3='\0', z4='\0';break;
+							case'z': z1='\0', z2='0', z3='\0', z4='\0';break;
+							case'x': z1='\0', z2='\0', z3='0', z4='\0';yup1=1;break;
+							case'c': z1='\0', z2='\0', z3='\0', z4='0';break;
 						}
 						}
 						if(i==2) 
@@ -212,10 +227,10 @@ char z1='0', z2, z3, z4, kolo;
 						kolo=getch();
 						switch(kolo)
 						{
-							case'w': z1='0', z2='\0', z3='\0', z4='\0';break;
-							case'a': z1='\0', z2='0', z3='\0', z4='\0';yup2=1;break;
-							case's': z1='\0', z2='\0', z3='0', z4='\0';break;
-							case'd': z1='\0', z2='\0', z3='\0', z4='0';break;
+							case's': z1='0', z2='\0', z3='\0', z4='\0';break;
+							case'z': z1='\0', z2='0', z3='\0', z4='\0';yup2=1;break;
+							case'x': z1='\0', z2='\0', z3='0', z4='\0';break;
+							case'c': z1='\0', z2='\0', z3='\0', z4='0';break;
 						}
 						}
 						if(i==3)
@@ -223,10 +238,10 @@ char z1='0', z2, z3, z4, kolo;
 						kolo=getch();
 						switch(kolo)
 						{
-							case'w': z1='0', z2='\0', z3='\0', z4='\0';break;
-							case'a': z1='\0', z2='0', z3='\0', z4='\0';break;
-							case's': z1='\0', z2='\0', z3='0', z4='\0';break;
-							case'd': z1='\0', z2='\0', z3='\0', z4='0';yup3=1;break;
+							case's': z1='0', z2='\0', z3='\0', z4='\0';break;
+							case'z': z1='\0', z2='0', z3='\0', z4='\0';break;
+							case'x': z1='\0', z2='\0', z3='0', z4='\0';break;
+							case'c': z1='\0', z2='\0', z3='\0', z4='0';yup3=1;break;
 						}
 						} 
 						if(i==4)
@@ -234,10 +249,10 @@ char z1='0', z2, z3, z4, kolo;
 						kolo=getch();
 						switch(kolo)
 						{
-							case'w': z1='0', z2='\0', z3='\0', z4='\0';break;
-							case'a': z1='\0', z2='0', z3='\0', z4='\0';yup4=1;break;
-							case's': z1='\0', z2='\0', z3='0', z4='\0';break;
-							case'd': z1='\0', z2='\0', z3='\0', z4='0';break;
+							case's': z1='0', z2='\0', z3='\0', z4='\0';break;
+							case'z': z1='\0', z2='0', z3='\0', z4='\0';yup4=1;break;
+							case'x': z1='\0', z2='\0', z3='0', z4='\0';break;
+							case'c': z1='\0', z2='\0', z3='\0', z4='0';break;
 						}
 						} 
 						if(i==4) 
@@ -259,8 +274,7 @@ char z1='0', z2, z3, z4, kolo;
 					
 					}
 					d=1;
-					cout<<"Brawo";
-					getch();
+					PlaySound(TEXT("door.wav"),NULL,SND_FILENAME | SND_ASYNC);
 					
 } else cout<<"Wchodzisz do Pokoju 4";					
 	return(0);
@@ -275,11 +289,11 @@ int instrukcja()
 	cout << endl << endl <<endl;
 	cout << "                                _______ "<<endl;
 	cout << "                               |       |"<<endl;
-	cout << "                               |   W   | --- Powrot"<<endl;
+	cout << "                               |   S   | --- Powrot"<<endl;
 	cout << "                               |_______|"<<endl;
 	cout << "                        _______   _______   _______ "<<endl;
 	cout << "                       |       | |       | |       |"<<endl;
-	cout << "                       |   A   | |   S   | |   D   |"<<endl;
+	cout << "                       |   z   | |   x   | |   c   |"<<endl;
 	cout << "                       |_______| |_______| |_______|"<<endl;
 	cout << "                         /           |           \\" <<endl;
 	cout << "                        /  Uzyj/przeszukaj rzecz  \\" <<endl;
@@ -287,6 +301,22 @@ int instrukcja()
 	cout << "      Inspekcja przedmiotu" << endl << endl << endl << endl;
 	getch();
 	PlaySound(TEXT("rollup.wav"),NULL,SND_FILENAME | SND_ASYNC);
-					
+						
+	return(0);
+}
+
+int lose()
+{
+	using namespace std;
+	system("cls");
+	cout<<"\n\n  __     ______  _    _    _      ____   _____ ______"<<endl;
+	cout<<"  \\ \\   / / __ \\| |  | |  | |    / __ \\ / ____|  ____|"<<endl;
+	cout<<"   \\ \\_/ / |  | | |  | |  | |   | |  | | (___ | |__   "<<endl;
+	cout<<"    \\   /| |  | | |  | |  | |   | |  | |\\___ \\|  __|  "<<endl;
+	cout<<"     | | | |__| | |__| |  | |___| |__| |____) | |____ "<<endl;
+	cout<<"     |_|  \\____/ \\____/   |______\\____/|_____/|______|"<<endl;
+	getch();
+	exit(0);
+	
 	return(0);
 }

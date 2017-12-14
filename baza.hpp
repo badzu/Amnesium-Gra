@@ -7,5 +7,7 @@ int instrukcja();
 int loading1();
 int menu();
 int tworca();
+int lose();
+int historyjka();
 
 #endif
