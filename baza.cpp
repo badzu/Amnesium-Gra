@@ -30,7 +30,8 @@ using namespace std;
 		if (p==0) cout<<"                           |         > START <       |\n"; else cout<<"                           |           START         |\n";
 		if (p==1) cout<<"                           |      > INSTRUKCJA <     |\n"; else cout<<"                           |        INSTRUKCJA       |\n";
 		if (p==2) cout<<"                           |        > TWORCA <       |\n"; else cout<<"                           |          TWORCA         |\n";
-		if (p==3) cout<<"                           |      > WYJDZ Z GRY <    |\n"; else cout<<"                           |        WYJDZ Z GRY      |\n";
+		if (p==3) cout<<"                           |         > DEMO <        |\n"; else cout<<"                           |           DEMO          |\n";
+		if (p==4) cout<<"                           |      > WYJDZ Z GRY <    |\n"; else cout<<"                           |        WYJDZ Z GRY      |\n";
 		cout << "                           ---------------------------"<<endl;
 		wybor=getch();
 		switch(wybor)
@@ -40,7 +41,7 @@ using namespace std;
 				else { PlaySound(TEXT("choice.wav"),NULL,SND_FILENAME | SND_ASYNC);	p--;
 				break;	}
 			case 80:
-				if(p==3) break;
+				if(p==4) break;
 				else { PlaySound(TEXT("choice.wav"),NULL,SND_FILENAME | SND_ASYNC);	p++;
 				break;	}
 			case 13:
@@ -52,7 +53,8 @@ using namespace std;
 	if(p==0) {system("cls"); return(0);}
 	if(p==1) instrukcja();
 	if(p==2) tworca();
-	if(p==3) exit(0);
+	if(p==3) demo();
+	if(p==4) exit(0);
 	goto MENU;
 	}
 	
@@ -122,6 +124,37 @@ int loading1()
         getch();
         PlaySound(TEXT("choice.wav"),NULL,SND_FILENAME | SND_ASYNC);
 }
+
+int demo()
+{		
+		system("cls");
+		using namespace std;
+		cout << "DEMO";
+		cout <<endl<< ">----------------------------{ AMNESIUM  POKOJ 2 }-----------------------------<"<<endl<<endl;												// POKOJ 2
+		cout << " Pokoj ten rozni sie od innych, zamiast bialych zdartych scian, sa naklejone tapety ze wzorami"
+		" gotyckimi. Kolorystyka dziwna, bo na tapetach przewaza kolor filetowy. Warstwa kurzu jednakze sie tutaj nie zmienila."
+		" Jakim cudem woogole sie tutaj znalazlem, skoro wszystko wyglada jak sprzed kilkudziesieciu lat ? "
+		" Na to pytanie musze wlasnie znalesc odpowiedz."<<endl<<endl;
+		cout << " Drzwi <A>" << endl;
+		cout << " Szafa <S>" << endl;
+		cout << " Biurko <D>" << endl;
+		cout << " Pianino <Z>" << endl;
+		cout << " Rysunek na scianie <X>" <<endl<<endl;
+        cout << " Wybierz rzecz do ktorej chcesz podejsc :"<< endl << endl;
+        	Sleep (3800);
+			cout << " > Podchodzisz do szafy\n"; // PRZYPADEK SZAFA 2 //
+			Sleep (1500);
+            cout << " > Fatalny stan szafy cie nie zaskakuje, potym ile juz mebli zobaczyles\n";
+			Sleep (1500);
+            cout<< " > W szafie nie ma nic ciekawego, co ciekawe brakuje jej tylniej sciany.\n";
+			Sleep (1500);
+            cout<<" > Nie ma tutaj nic do wziecia\n";
+			Sleep (1500);
+            cout << " > Odchodzisz od przedmiotu";
+            Sleep (2500);
+
+}
+
 int klodka()
 {
 using namespace std;
@@ -187,7 +220,7 @@ cout<< " Armia krola udala sie na polnoc. Walka tam jednak byla tragiczna w skut
 "Niestety krolestwo ktore zastali byl pod atakiem barbazyncow. Udali sie wiec na zachod. Przez pare lat zylo im tam sie pieknie"
 ", a armia zdazyla sie odbudowac. Ruszyli wiec na wschod. Stoczyli tam kilka zwycieskich walk. Po czym zdecydowali wrocic "
 "z powrotem na zachod\n\n"; getch();
- cout<<"Wyglada to na szyfr do poruszania dzwignia";
+ cout<<" > Wyglada to na szyfr do poruszania dzwignia";
 	
 	return(0);
 }
@@ -196,8 +229,14 @@ cout<< " Armia krola udala sie na polnoc. Walka tam jednak byla tragiczna w skut
 int dzwignia()
 {
 using namespace std;
-int d, yup1, yup2, yup3, yup4;
+int d, yup1, yup2, yup3, yup4, dead=0;
 char z1='0', z2, z3, z4, kolo;
+
+cout<< "\n\n  Zasada dzialania dzwigni \n";
+cout<< "   S - Dzwignia do gory\n";
+cout<< "   Z - Dzwignia w lewo\n";
+cout<< "   X - Dzwignia w dol\n";
+cout<< "   C - Dzwignia w prawo\n";
 
 	if (d!=1) 
 				{
@@ -268,6 +307,16 @@ char z1='0', z2, z3, z4, kolo;
 							i=0;
 							yup1=0,yup2=0,yup3=0;
 							z1='0', z2='\0', z3='\0', z4='\0';
+							dead ++;
+							if (dead==3)
+							{
+								Sleep(3000);
+		        				PlaySound(TEXT("bearkill.wav"),NULL,SND_FILENAME | SND_ASYNC);
+       						 	Sleep(2000);					
+       					 		system("cls");
+       					 		cout<<"\n > Przez futryne drzwi przebijaja sie kolce, ktore cie zabijaja.";
+							  	lose();
+							}
 						}
 						}
 						system("cls");
@@ -308,7 +357,6 @@ int instrukcja()
 int lose()
 {
 	using namespace std;
-	system("cls");
 	cout<<"\n\n  __     ______  _    _    _      ____   _____ ______"<<endl;
 	cout<<"  \\ \\   / / __ \\| |  | |  | |    / __ \\ / ____|  ____|"<<endl;
 	cout<<"   \\ \\_/ / |  | | |  | |  | |   | |  | | (___ | |__   "<<endl;

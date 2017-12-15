@@ -5,6 +5,7 @@ int klodka();
 int dzwignia();
 int instrukcja();
 int loading1();
+int demo();
 int menu();
 int tworca();
 int lose();

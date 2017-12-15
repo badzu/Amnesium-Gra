@@ -10,7 +10,7 @@
 #include "baza.hpp"
 using namespace std;
 
-	int skey, rkey, oknf, kskey, bylo, bear, kldk, klwrtk, notatka1, notatka2 ;
+	int skey, rkey, oknf, kskey, bylo, bear, kldk, klwrtk, notatka1, notatka2, mkjd ;
 	char wybor;
 
 	int main()
@@ -22,8 +22,8 @@ using namespace std;
         Sleep(250);
         system("cls");
 		cout <<endl<< ">----------------------------{ AMNESIUM  POKOJ 1 }-----------------------------<"<<endl<<endl;											//POKOJ 1
-		cout << " Budzisz sie w zamknietym pomieszczeniu na lozku, twoja glowa bardzo cie boli,\n a obraz poczatkowo wydaje"
-			" sie byc jakby przez mgle. Chwila lezenia pomaga \n w koncu dojsc do siebie. Pokoj nie jest duzy \n dostrzegasz jedynie "
+		cout << " Budzisz sie w zamknietym pomieszczeniu na lozku, twoja glowa bardzo cie boli, a obraz poczatkowo wydaje"
+			" sie byc jakby przez mgle. Chwila lezenia pomaga w koncu dojsc do siebie. Pokoj nie jest duzy dostrzegasz jedynie "
 			"biurko, szafe, obraz oraz drzwi"<<endl<<endl;
 		cout << " Drzwi <A> "<< endl;
 		cout << " Stary Obraz <S>" << endl;
@@ -294,21 +294,23 @@ using namespace std;
 				cout << " > Podchodzisz do Pokoju 2"; 
 				if (klwrtk!=1)
 				{
-				cout<< "\n\n UWAGA ! Drzwi sa zablokowane dzwignia. Czy umiesz rozwiazac ta zagadke ? (ENTER/X)";
+				cout<< "\n > Na futrynie drzwi dostrzagasz napis : \n";
+				cout<< "UWAGA ! Drzwi sa zablokowane dzwignia, ktora moze zabic. Mam nadzieje, ¿e umiesz rozwiazac ta zagadke \n";
+				cout << " > Czy chcesz stawic czola dzwigni ? (ENTER/X) ?";
 				wybor = getch();
                     switch (wybor)
-                            {
+                    {
 
-                    case 'x':
-                    cout << "\n > Idziesz do Korytarza";
-                    goto KORYTARZ1;
-                    break;
+                   		 case 'x':
+                   		 cout << "\n > Idziesz do Korytarza";
+                   		 goto KORYTARZ1;
+                   		 break;
 
-                    case 13:
-                    dzwignia();
-                    break;			
-				}
-				goto POKOJ2;
+                   		 case 13:
+                   		 dzwignia();
+                   		 break;			
+					}
+					goto POKOJ2;
 				}
 				break;
 			case 'd':
@@ -464,14 +466,24 @@ using namespace std;
 
                     case 'x':
                 	cout<< " > Pianino jak pianino nie znujdujesz obok niego nic. Jednak poczules natchnienie do gry na nim. Nie jestes sobie w stanie przypomniec czy nawet potrafisz grac.";
-                	Sleep(500);
-                	cout<< "Podczas gry nie spodziewanie wypada z niego klucz. Musial byc jakos sprytnie schowany w strunach pianina.";
-                    goto PIANINO1;
+                	if (kskey!=1)
+                    {
+                		goto PIANINO1;
+                	} 
+					else
+                	{
+                		Sleep(500);
+                		cout<< "Podczas gry nie spodziewanie wypada z niego klucz. Musial byc jakos sprytnie schowany w strunach pianina.";
+                		goto PIANINO1;
+                	}
                     break;
 
                     case 'c':
+                    if (kskey!=1)
+                    {
                     cout << " > Wziales klucz o oznaczeniu KS#12";
                     kskey = 1;
+                	} else cout <<" Nie ma tutaj nic do podniesienia";
                     goto PIANINO1;
                     break;
 
@@ -532,11 +544,13 @@ using namespace std;
         cout<<endl<<endl;
         cout << " Wybierz rzecz do ktorej chcesz podejsc :"<< endl << endl;
         
-         if (bear==1)
+        if (bear==1)
         {
         	Sleep(3000);
         	PlaySound(TEXT("bearkill.wav"),NULL,SND_FILENAME | SND_ASYNC);
         	Sleep(2000);
+        	system("cls");
+       		cout<<"\n > Bear trafia cie mieczem prosto w klatke piersiowa. Umierasz.";
         	lose();
 		}
 
@@ -661,7 +675,6 @@ using namespace std;
 
                     case 'c':
                     cout << " > Nie ma tu nic do wziecia";
-                    oknf = 1;
                     goto TELEWIZOR1;
                     break;
 
@@ -831,7 +844,7 @@ using namespace std;
 
                     case 'c':
                     cout << " > Wziales metalowe kajdanki";
-                    oknf = 1;
+                    mkjd = 1;
                     goto SZAFKA_NOCNA1;
                     break;
 
