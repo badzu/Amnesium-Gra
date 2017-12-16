@@ -10,13 +10,23 @@
 #include "baza.hpp"
 using namespace std;
 
-	int skey, rkey, oknf, kskey, bylo, bear, kldk, klwrtk, notatka1, notatka2, mkjd ;
-	char wybor;
+	int skey; // klucz, otwiera drzwi POKOJ1 
+	int rkey; // klucz, otwiera pojemnik w SZAFA1 
+	int oknf; // nó¿, otwiera drzwi do POKOJ4
+	int kskey; // klucz, otwiera drzwi w KLATKASCHODOWA1
+	int bylo; // zmienia funkcje drzwi w POKOJ1 po przejsciu pierwszy raz do korytarza
+	int bear;  // zmienna dotyczaca pojawienia sie wroga o nazwie "Bear"
+	int kldk; // sprawdza czy rozwiazalimy klodke
+	int klwrtk; // sprawdza czy rozwiazalismy dzwignie
+    int notatka1; // sprawdza czy wzielismy kawalek notatki
+	int notatka2; // sprawdza czy wzielismy kawalek notatki
+	int mkjd ; // sprawdza czy wzielismy kajdanki
+	char wybor; // zmienna stosowana w switch/case
 
 	int main()
 	{
-	menu();
-	loading1();
+	menu(); // Otwiera w baza.cpp nasze menu gry
+	loading1(); // Otwiera w baza.cpp ekran wczytywania gry
 		
         POKOJ1:
         Sleep(250);
@@ -33,28 +43,28 @@ using namespace std;
         cout<<endl<<endl;
         cout << " Wybierz rzecz do ktorej chcesz podejsc :"<< endl << endl;
 
-            char wybor = getch();
-            switch (wybor)
+            char wybor = getch();	// przypisujemy zmiennej wybor wartosc jednego znaku pobieranego z klawiatury bez entera
+            switch (wybor)	// wybor pomiedzy przedmiotami w POKOJ1
             {
 			case 'a':
 				
-				 	if (bylo==1)
+				 	if (bylo==1)	// warunek ktory, zmienia funkcje naszych drzwi kiedy wyjdziemy z POKOJ1 do KORYTARZ1 po raz pierwszy
                     	{
                     		cout << " > Czy chcesz wyjsc z pokoju (ENTER/X) ?";
                     		BYLO_DRZWI1:
                     		cout<<endl;
 
                             wybor = getch();
-                            switch (wybor)
+                            switch (wybor) // wybor ktory decyduje o tym czy wychodzimy z POKOJ1
                             {
 
                             case 13:
-                            goto KORYTARZ1;
+                            goto KORYTARZ1; // instrukcja ta przenosi na do KORYTARZ1
                             break;
 
                             case 'x':
                             cout<< " > Odchodzisz od drzwi  ";
-                            goto POKOJ1;
+                            goto POKOJ1; // instrukcja ta przenosi na do POKOJ1
                             break;
 
 
@@ -70,7 +80,7 @@ using namespace std;
 				cout<<endl;
 
                     wybor = getch();
-                    switch (wybor) 
+                    switch (wybor) // wybor, pomiedzy czterema interakcjami z przedmiotem
                     {
                     case 'z':
 
@@ -79,7 +89,7 @@ using namespace std;
                     break;
 
                     case 'x':
-                        if (skey==1)
+                        if (skey==1) // warunek ktory sprawdza czy posiadamy klucz skey. Jesli tak to mozemy otworzyc nasze drzwi i isc z POKOJ1 do KORYTARZ1
                         {
                         cout << " > Uzyto klucza drzwi sie otwieraja, czy chcesz przejsc do Korytarza (ENTER/X) ?";
                         PlaySound(TEXT("door.wav"),NULL,SND_FILENAME | SND_ASYNC);
@@ -89,7 +99,7 @@ using namespace std;
                         cout<<endl;
 
                             wybor = getch();
-                            switch (wybor)
+                            switch (wybor) // wybor ktory decyduje o tym czy wychodzimy z POKOJ1
                             {
 
                             case 13:
@@ -106,7 +116,7 @@ using namespace std;
                             default: cout<< " > Nie ma takiej opcji ";
                             goto DRZWI_KLUCZ1;
                             }
-                            } else
+                            } else // jesli nie mamy klucza skey drzwi sie nie otworz¹
                             cout<< " > Nie mozna otworzyc drzwi";
                             goto DRZWI1;
                             break;
@@ -134,7 +144,7 @@ using namespace std;
                 cout<<endl;
 
                     wybor = getch();
-                    switch (wybor)
+                    switch (wybor) // wybor, pomiedzy czterema interakcjami z przedmiotem
                     {
                     case 'z':
                     cout << " > Obraz wydaje sie tak jakby dziwnie na ciebie spogladac, ale ciezko powiedziec czy to tylko"
@@ -148,12 +158,12 @@ using namespace std;
                     break;
 
                     case 'c':
-                        if(rkey!=1)
+                        if(rkey!=1) // warunek ktory sprawdza czy posiadamy klucz rkey, jesli rkey!=1 to go bierzemy
                         {
                         cout << " > Znajdujesz zardzewialy klucz";
                         rkey = 1;
                         }
-                        else cout<<" > Wzioles juz zardzewialy klucz";
+                        else cout<<" > Wzioles juz zardzewialy klucz"; // jesli rkey=1 to go nie bierzemy
                     goto OBRAZ1;
                     break;
 
@@ -174,7 +184,7 @@ using namespace std;
 				cout<<endl;
 
                     wybor = getch();
-                    switch (wybor)
+                    switch (wybor) // wybor, pomiedzy czterema interakcjami z przedmiotem
                     {
                         case 'z':
                         cout << " > Cale pognite i paskudne biurko, pasuje do tego mrocznego wystroju.";
@@ -188,12 +198,12 @@ using namespace std;
                         break;
 
                         case 'c':
-                            if(skey!=1)
+                            if(skey!=1) // warunek ktory sprawdza czy posiadamy klucz skey, jesli skey!=1 to go bierzemy
                             {
                             cout << " > Bierzesz srebrny klucz";
                             skey = 1;
                             }
-                            else cout<<" > Wzieto juz srebrny klucz";
+                            else cout<<" > Wzieto juz srebrny klucz"; // jesli skey=1 to go nie bierzemy
                         goto BIURKO1;
                         break;
 
@@ -214,7 +224,7 @@ using namespace std;
 				cout<<endl;
 
                     wybor = getch();
-                    switch (wybor)
+                    switch (wybor) // wybor, pomiedzy czterema interakcjami z przedmiotem
                     {
                     case 'z':
 
@@ -224,21 +234,21 @@ using namespace std;
                     break;
 
                     case 'x':
-                        if (rkey==1)
+                        if (rkey==1) // warunek ktory sprawdza czy posiadamy klucz rkey, jesli skey!=1 to otwieramy schowek
                         {
                         cout << " > Uzyto klucza, schowek sie otwiera i znajdujesz na jego dnie cos ostrego";
-                        } else
+                        } else // jesli rkey=1 to nie otwieramy schowka
                         cout<< " > Nie mozna otworzyc schowka";
                         goto SZAFA1;
                         break;
 
                     case 'c':
-                    if (rkey==1)
+                    if (oknf==1) // warunek ktory sprawdza czy posiadamy klucz rkey, jesli oknf!=1 to bierzemy oknf (nó¿), ktory jest potrzebny do otworzenia drzwi w POKOJ4
                     {
                     cout << " > Wzieto stary pordzewialy noz";
                     oknf = 1;
                 	}
-                    else cout << " > Nie ma tutaj nic do zebrania.";
+                    else cout << " > Nie ma tutaj nic do zebrania."; // jesli oknf=1, to nie mo¿emy go wzi¹œæ ponownie
                     goto SZAFA1;
                     break;
 
@@ -270,7 +280,7 @@ using namespace std;
 		"coraz bardziej. Z korytarza mozesz pojsc do czterech pokoi lub klatki schodowej. "<<endl<<endl;
 		if(bear==1)
 		{
-			Sleep(4000);
+			Sleep(1000);
 			cout<<" DOSTRZEGASZ ZAMYKAJACE SIE DRZWI OD POKOJU 3 \n\n";
 			PlaySound(TEXT("bearclose.wav"),NULL,SND_FILENAME | SND_ASYNC);
 		}
@@ -284,7 +294,7 @@ using namespace std;
         cout << " Wybierz miejsce do ktorego chcesz pojsc :"<< endl << endl;
 
             wybor = getch();
-            switch (wybor)
+            switch (wybor) // wybor pomiedzy wejsiem do pokoi i klatki schodowej w KORYTARZ1
             {
 			case 'a':
 				cout << " > Podchodzisz do Pokoju 1"; 
@@ -292,13 +302,13 @@ using namespace std;
 				break;
 			case 's':
 				cout << " > Podchodzisz do Pokoju 2"; 
-				if (klwrtk!=1)
+				if (klwrtk!=1)  // warunek ktory sprawdza czy rozwiazalismy zagadke dzwignia
 				{
 				cout<< "\n > Na futrynie drzwi dostrzagasz napis : \n";
-				cout<< "UWAGA ! Drzwi sa zablokowane dzwignia, ktora moze zabic. Mam nadzieje, ¿e umiesz rozwiazac ta zagadke \n";
-				cout << " > Czy chcesz stawic czola dzwigni ? (ENTER/X) ?";
+				cout<< "UWAGA ! Drzwi sa zablokowane dzwignia, ktora moze zabic. W pokoju sa notatki ktore pomoga \n";
+				cout << " > Czy chcesz stawic czola dzwigni [NIE MA ODWROTU] ? (ENTER/X) ?";
 				wybor = getch();
-                    switch (wybor)
+                    switch (wybor) // wybor ktory decyduje o tym czy odchodzimy od zagadki dzwignia
                     {
 
                    		 case 'x':
@@ -306,25 +316,25 @@ using namespace std;
                    		 goto KORYTARZ1;
                    		 break;
 
-                   		 case 13:
-                   		 dzwignia();
+                   		 case 13:	// w tym case program otworzy zagadke dzwignia z pliku baza.cpp
+                   		 dzwignia(); 
                    		 break;			
 					}
 					goto POKOJ2;
 				}
 				break;
-			case 'd':
+			
 				system("cls");
 				cout << " > Podchodzisz do Pokoju 3"<<endl<<endl;
-				if (kldk!=1)
+				if (kldk!=1) // warunek ktory sprawdza czy rozwiazalismy zagadke klodka
 				{
-					klodka();
+					if (klodka()==1) goto KORYTARZ1; // w tym warunku program otworzy zagadke pliku z pliku baza.cpp, jesli zwroci on wartosc 1 to przeniesie nas on do KORYTARZ1
 				}
 				goto POKOJ3;
 				break;
 			case 'z':
 				system("cls");
-				if (oknf!=1)
+				if (oknf!=1) // warunek ktory sprawdza czy mamy nóŸ oknf, jeœli oknf!=1 to drzwi sie nie otworza i wrócimy na KORYTARZ1
 				{
 					cout << " Drzwi blokuje sznurek z drugiej strony, pasowalo by cos ostrego aby go przeciac, przez szczeline.";
 					Sleep(3000);
@@ -342,7 +352,7 @@ using namespace std;
 		}
 		
 	POKOJ2:
-	klwrtk=1;
+	klwrtk=1; // nadajemy wartosc 1 zmiennej klwrtk dzieki czemu nie trzeba rozwi¹zywaæ zagadki dzwignia jeszcze raz
 	system("cls");
 		cout <<endl<< ">----------------------------{ AMNESIUM  POKOJ 2 }-----------------------------<"<<endl<<endl;												// POKOJ 2
 		cout << " Pokoj ten rozni sie od innych, zamiast bialych zdartych scian, sa naklejone tapety ze wzorami"
@@ -359,12 +369,12 @@ using namespace std;
         cout << " Wybierz rzecz do ktorej chcesz podejsc :"<< endl << endl;
        
             wybor = getch();
-            switch (wybor)
+            switch (wybor) // wybor pomiedzy przedmiotami w POKOJ2
             {
 			case 'a':
 				cout << " > Czy chcesz wyjsc z pokoju (ENTER/X) ?"; // PRZYPADEK DRZWI 4//
                 wybor = getch();
-                switch (wybor)
+                switch (wybor) // wybor ktory decyduje o tym czy wychodzimy z POKOJ1
                 {
 
               	    case 13:
@@ -387,7 +397,7 @@ using namespace std;
                 cout<<endl;
 
                 wybor = getch();
-                switch (wybor)
+                switch (wybor) // wybor, pomiedzy czterema interakcjami z przedmiotem
                 {
                     case 'z':
                     cout << " > Fatalny stan szafy cie nie zaskakuje, potym ile juz mebli zobaczyles";
@@ -421,7 +431,7 @@ using namespace std;
 				cout<<endl;
 
                     wybor = getch();
-                    switch (wybor)
+                    switch (wybor) // wybor, pomiedzy czterema interakcjami z przedmiotem
                     {
                         case 'z':
                         cout << " > Biurko jest w wyjatkowo fatalnym stanie. Jest tak pognite ze zastanawiasz sie jakim cudem jeszcze stoi";
@@ -436,7 +446,6 @@ using namespace std;
 
                         case 'c':
                     	cout<< " > Nie ma tutaj nic do wziecia";
-                        //to gowno 1 moze
                         goto BIURKO2;
                         break;
 
@@ -457,7 +466,7 @@ using namespace std;
 				cout<<endl;
 
                     wybor = getch();
-                    switch (wybor)
+                    switch (wybor) // wybor, pomiedzy czterema interakcjami z przedmiotem
                     {
                     case 'z':
                     cout << " > Zakurzone pianino, ktore na pierwszy rzut oka wydaje sie byc sprawne. Co ciekawe klawisze nie sa zakurzone az tak bardzo w porownaniu do reszty ";
@@ -466,11 +475,11 @@ using namespace std;
 
                     case 'x':
                 	cout<< " > Pianino jak pianino nie znujdujesz obok niego nic. Jednak poczules natchnienie do gry na nim. Nie jestes sobie w stanie przypomniec czy nawet potrafisz grac.";
-                	if (kskey!=1)
+                	if (kskey==1) // warunek ktory sprawdza czy posiadamy kskey czyli klucz do KLATKASCHODOWA1 , jeœli kskey==1 to z PIANINO1 nie wypadnie klucz bo go juz mamy
                     {
                 		goto PIANINO1;
                 	} 
-					else
+					else // jeœli go nie mamy  to wypadnie podczas gry na PIANINO1
                 	{
                 		Sleep(500);
                 		cout<< "Podczas gry nie spodziewanie wypada z niego klucz. Musial byc jakos sprytnie schowany w strunach pianina.";
@@ -479,11 +488,11 @@ using namespace std;
                     break;
 
                     case 'c':
-                    if (kskey!=1)
+                    if (kskey!=1) // warunek ktory sprawdza czy posiadamy kskey czyli klucz do KLATKASCHODOWA1 , jeœli kskey!=1 to bierzemy klucz
                     {
                     cout << " > Wziales klucz o oznaczeniu KS#12";
                     kskey = 1;
-                	} else cout <<" Nie ma tutaj nic do podniesienia";
+                	} else cout <<" Nie ma tutaj nic do podniesienia"; // jesli kskey==1 to nie mo¿emy go podnieœæ po raz kolejny
                     goto PIANINO1;
                     break;
 
@@ -510,11 +519,11 @@ using namespace std;
 					cout << "     	        /  ``\\_.-''-._/``  \\"<<endl;
 					cout << "      	              \\/`--`\\/"<<endl<<endl;
 					cout << "               THEY CALL HIM B-E-A-R";
-					if (bear!=1)
+					if (bear!=1) // warunek, ktory sprawdza czy przeciwnik bear zostal posiada wartosc ró¿na od 1.
 					{PlaySound(TEXT("bear.wav"),NULL,SND_FILENAME | SND_ASYNC); 
 					Sleep(6000);
 					system("cls");Sleep(4000);PlaySound(TEXT("beargo.wav"),NULL,SND_FILENAME | SND_ASYNC); Sleep(4500);}
-					Sleep(3000); bear=1;
+					Sleep(3000); bear=1; // po wykonaniu warunku przypisujemy mu wartoœc 1, przez co instrukcje z poprzedniego warunku sie nie wykonaja
 					goto POKOJ2;
 					
                 case 'i':
@@ -544,23 +553,23 @@ using namespace std;
         cout<<endl<<endl;
         cout << " Wybierz rzecz do ktorej chcesz podejsc :"<< endl << endl;
         
-        if (bear==1)
+        if (bear==1) // warunek ktory sprawdza czy aktywowalismy przeciwnika Beara w POKOJU2. Jesli bear=1 to oznacza ze nas zabija i gra sie konczy
         {
-        	Sleep(3000);
+        	Sleep(1500);
         	PlaySound(TEXT("bearkill.wav"),NULL,SND_FILENAME | SND_ASYNC);
         	Sleep(2000);
         	system("cls");
        		cout<<"\n > Bear trafia cie mieczem prosto w klatke piersiowa. Umierasz.";
-        	lose();
+        	lose(); // otwiera sciezke w pliku baza.cpp
 		}
 
             wybor = getch();
-            switch (wybor)
+            switch (wybor) // wybor pomiedzy przedmiotami w POKOJ3
             {
 			case 'a':
 				cout << " > Czy chcesz wyjsc z pokoju (ENTER/X) ?"; // PRZYPADEK DRZWI 3//
                 wybor = getch();
-                switch (wybor)
+                switch (wybor) // wybor ktory decyduje o tym czy wychodzimy z POKOJ1
                 {
 
               	    case 13:
@@ -585,7 +594,7 @@ using namespace std;
                 cout<<endl;
 
                 wybor = getch();
-                switch (wybor)
+                switch (wybor) // wybor, pomiedzy czterema interakcjami z przedmiotem
                 {
                     case 'z':
                     cout << " > Zwykle bardzo stare lozko. Dalsza inspekcja tego lozka moze spowodowac\n"
@@ -621,7 +630,7 @@ using namespace std;
 				cout<<endl;
 
                     wybor = getch();
-                    switch (wybor)
+                    switch (wybor) // wybor, pomiedzy czterema interakcjami z przedmiotem
                     {
                         case 'z':
                         cout << " > Siedzisko jest cale podrabane i wysiedziane. Tona kurzu troszke to maskuje";
@@ -636,7 +645,7 @@ using namespace std;
 
                         case 'c':
                         notatka1=1;
-                        if (notatka1==1 && notatka2==1)
+                        if (notatka1==1 && notatka2==1) // warunek ktory sprawdza czy mamy obie czesni notatek, jesli notatka1=1 i notatka2=1, wówczas program przeniesie nas do funkcji historyjka w baza.hpp
 						{				historyjka();                   	}
                     	else cout<< " > Wzieto skrawki papieru";
                         goto FOTEL1;
@@ -659,7 +668,7 @@ using namespace std;
 				cout<<endl;
 
                     wybor = getch();
-                    switch (wybor)
+                    switch (wybor) // wybor, pomiedzy czterema interakcjami z przedmiotem
                     {
                     case 'z':
 
@@ -726,12 +735,12 @@ using namespace std;
         cout << " Wybierz rzecz do ktorej chcesz podejsc :"<< endl << endl;
 
             wybor = getch();
-            switch (wybor)
+            switch (wybor) // wybor pomiedzy przedmiotami w POKOJ4
             {
 			case 'a':
 				cout << " > Czy chcesz wyjsc z pokoju (ENTER/X) ?"; // PRZYPADEK DRZWI 4//
                 wybor = getch();
-                switch (wybor)
+                switch (wybor) // wybor ktory decyduje o tym czy wychodzimy z POKOJ1
                 {
 
               	    case 13:
@@ -757,7 +766,7 @@ using namespace std;
                 cout<<endl;
 
                 wybor = getch();
-                switch (wybor)
+                switch (wybor) // wybor, pomiedzy czterema interakcjami z przedmiotem
                 {
                     case 'z':
                     cout << " > Lozko wyglada na stare ale wydaje sie byc solidne i nie byc az tak bardzo pognite";
@@ -791,7 +800,7 @@ using namespace std;
 				cout<<endl;
 
                     wybor = getch();
-                    switch (wybor)
+                    switch (wybor) // wybor, pomiedzy czterema interakcjami z przedmiotem
                     {
                         case 'z':
                         cout << " > Szafa wydaje sie wygladac dosyc swiezo w porownaniu z reszta mebli. \n"
@@ -807,7 +816,7 @@ using namespace std;
 
                         case 'c':  	
 						notatka2=1;
-						if (notatka1==1 && notatka2==1)
+						if (notatka1==1 && notatka2==1)  // warunek ktory sprawdza czy mamy obie czesni notatek, jesli notatka1=1 i notatka2=1, wówczas program przeniesie nas do funkcji historyjka w baza.hpp
 						{				historyjka();                   	}
                     	else cout<< " > Wzieto skrawki papieru";
                         goto SZAFA3;
@@ -830,7 +839,7 @@ using namespace std;
 				cout<<endl;
 
                     wybor = getch();
-                    switch (wybor)
+                    switch (wybor) // wybor, pomiedzy czterema interakcjami z przedmiotem
                     {
                     case 'z':
                     cout << " Szafka nocna biala wyglada bardzo dostojnie, nie jest tak pognita jak reszta mebli. ";
@@ -844,7 +853,7 @@ using namespace std;
 
                     case 'c':
                     cout << " > Wziales metalowe kajdanki";
-                    mkjd = 1;
+                    mkjd = 1; // przypisane kajdankom wartoœæ 1 jest równoznaczne z ich wziêciem
                     goto SZAFKA_NOCNA1;
                     break;
 
@@ -853,7 +862,7 @@ using namespace std;
                     goto POKOJ4;
                     break;
 
-                    default: cout<< "";
+                    default: cout<< " > Nie ma takiej opcji";
                     goto SZAFKA_NOCNA1;
                     }
 					
@@ -887,7 +896,7 @@ using namespace std;
                     goto POKOJ4;
                     
         	KLATKA_SCHODOWA1:
-        		if(kskey==1)
+        		if(kskey==1) // warunek ktory sprawdza czy klucz do klatki schodowej jest wziety, jesli kskey=1 wygrywamy gre
         		{
         			cout<<"\n\n                     __     ______  _    _   __          _______ _   _ "<<endl;
         			cout<<"                     \\ \\   / / __ \\| |  | |  \\ \\        / /_   _| \\ | |"<<endl;
@@ -897,7 +906,7 @@ using namespace std;
         			cout<<"                        |_|  \\____/ \\____/       \\/  \\/   |_____|_| \\_|"<<endl;
 					getch();
         		}
-        		else
+        		else // w innym przypadku nie mo¿emy gry ukoñczyæ i program odsy³a nas do KORYTARZ1
         		{
         			cout<<" Drzwi sa zamkniete"	;
         			goto KORYTARZ1;

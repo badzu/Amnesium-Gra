@@ -12,7 +12,7 @@ int o, p;
 char wybor;
 using namespace std;
 	MENU:
-	for (o=1,p=0 ; p>=0 && o>0;)
+	for (o=1,p=0 ; p>=0 && o>0;) // petla ktora wykonuje sie ca³y czas dopoki nie zatwierdzimy opcji
 	{	
 		system("cls");
 		cout << "   ___________________________________________________________________________"<<endl;
@@ -34,7 +34,7 @@ using namespace std;
 		if (p==4) cout<<"                           |      > WYJDZ Z GRY <    |\n"; else cout<<"                           |        WYJDZ Z GRY      |\n";
 		cout << "                           ---------------------------"<<endl;
 		wybor=getch();
-		switch(wybor)
+		switch(wybor) // poruszanie sie po menu w góre, w do³ oraz zatwierdzanie
 		{
 			case 72:
 				if(p==0) break;
@@ -50,15 +50,15 @@ using namespace std;
 				break;				
 		}	
 	}
-	if(p==0) {system("cls"); return(0);}
-	if(p==1) instrukcja();
-	if(p==2) tworca();
-	if(p==3) demo();
-	if(p==4) exit(0);
+	if(p==0) {system("cls"); return(0);} // dla p=0 funkcja koñczy sie przenosz¹c nas tym samym do pocz¹tku kodu w main.cpp
+	if(p==1) instrukcja(); // dla p=1 funkcja pokazuje nam instrukcje
+	if(p==2) tworca(); // dla p=2 funkcja pokazuje nam tworcow gry
+	if(p==3) demo(); // dla p=3 funckja pokazuje nam demo gry
+	if(p==4) exit(0); // dla p=4 funkcja konczy dzia³anie programu
 	goto MENU;
 	}
 	
-int tworca()
+int tworca() // tworcy gry
 {
 using namespace std;
 system("cls");
@@ -77,7 +77,7 @@ return(0);
 }
 
 
-int loading1()
+int loading1() // ekran wczyrtywania gry
 {
 		using namespace std;
 		PlaySound(TEXT("loading.wav"),NULL,SND_FILENAME | SND_ASYNC);
@@ -125,7 +125,7 @@ int loading1()
         PlaySound(TEXT("choice.wav"),NULL,SND_FILENAME | SND_ASYNC);
 }
 
-int demo()
+int demo() // demo gry
 {		
 		system("cls");
 		using namespace std;
@@ -155,11 +155,11 @@ int demo()
 
 }
 
-int klodka()
+int klodka() // zagadaka klodka
 {
 using namespace std;
-int k, kldk;
-char a='0', b='0', c='0';
+int k;
+char a='0', b='0', c='0',wybor;
 
 cout<<"                    Na drzwiach jest wystrugane \n\n";
 cout<<"                         |  8   2   6 |\n";
@@ -168,7 +168,7 @@ cout<<"                         | 49  -6  35 |\n\n";
 cout<<"                     Plus zmienia sie na minus\n\n";
 	if (k!=1) 
 				{
-					for (int i=1; i<=4; i++)
+					for (int i=1; i<=4; i++) // Petla wykonuje sie 4 razy. Przez pierwsze 3 razy naszym zadaniem jest wprowadzenie cyfr szyfru. Za czwartym razem petla sprawdza poprawnoœæ szyfru
 					{
 						cout<<"                           .------------."<<endl;
 						cout<<"                          / .----------. \\"<<endl;
@@ -183,12 +183,24 @@ cout<<"                     Plus zmienia sie na minus\n\n";
 						cout<<"                |   '.'._.'.' '.'._.'.' '.'._.'.'   | "<<endl;
 						cout<<"                '.____'._.'_____'._.'_____'._.'____.' "<<endl;
 						cout<<"                '._________________________________.' "<<endl;
-						if(i==1) a=getch();
-						if(i==2) b=getch();
-						if(i==3) c=getch();
+						if(i==1) 
+						{
+							 a=getch();
+							 if(a=='s') return(1); // ten warunek sprawdza czy chcemy odejsc od klodki, jesli prawdziwe to przeniesie nas to do KORYTARZ1
+						}
+						if(i==2)
+						{
+							 b=getch();
+							 if(b=='s') return(1); // ten warunek sprawdza czy chcemy odejsc od klodki, jesli prawdziwe to przeniesie nas to do KORYTARZ1
+						}
+						if(i==3)
+						{
+							 c=getch();
+							 if(b=='s') return(1); // ten warunek sprawdza czy chcemy odejsc od klodki, jesli prawdziwe to przeniesie nas to do KORYTARZ1
+						}
 						if(i==4) 
 						{
-						if(a=='2' && b=='5' && c=='2')
+						if(a=='2' && b=='5' && c=='2') // petla sprawdza tu czy szyfr jest poprawny
 						{
 							cout<<endl<<endl;	
 						}
@@ -208,11 +220,11 @@ cout<<"                     Plus zmienia sie na minus\n\n";
 					
 }	
 else cout<<"Wchodzisz do Pokoju 3";
-return(kldk=1);		
+return(0);		
 }
 
 
-int historyjka()
+int historyjka() // Otwiera sie ona gdy zierzemy notaka1 i notatka2. Jest ona potrzebna do rozwi¹zania zagadki dŸwigna
 {
 using namespace std;
 cout<< " > Wzieto skrawki papieru, z ktorych udalo ci sie zlozyc kawalek notatki \n\n";
@@ -226,7 +238,7 @@ cout<< " Armia krola udala sie na polnoc. Walka tam jednak byla tragiczna w skut
 }
 
 
-int dzwignia()
+int dzwignia() // zagadka dzwignia 
 {
 using namespace std;
 int d, yup1, yup2, yup3, yup4, dead=0;
@@ -240,7 +252,7 @@ cout<< "   C - Dzwignia w prawo\n";
 
 	if (d!=1) 
 				{
-					for (int i=1; i<=5; i++)
+					for (int i=1; i<=5; i++) // petla ktora wykonuje sie 5 razy. Przez pierwsze 4 razy wprowadzamy polozenie dŸwigni. W ostatnim razie petla sprawdza poprawnosc wprowadzonych ruchów d¿wigni
 					{
 						cout<<"\n\n     ---"<<endl;
 						cout<<"    | ";cout<<z1;cout<<" |"<<endl;
@@ -250,7 +262,7 @@ cout<< "   C - Dzwignia w prawo\n";
 						cout<<"    | ";cout<<z3;cout<<" |"<<endl;
 						cout<<"     ---"<<endl;
 							
-						if(i==1)
+						if(i==1) // wprowadzenie pierwszego ruchu dzwigni
 						{
 						kolo=getch();
 						switch(kolo)
@@ -261,7 +273,7 @@ cout<< "   C - Dzwignia w prawo\n";
 							case'c': z1='\0', z2='\0', z3='\0', z4='0';break;
 						}
 						}
-						if(i==2) 
+						if(i==2) // wprowadzenie drugiego ruchu dzwigni
 						{
 						kolo=getch();
 						switch(kolo)
@@ -272,7 +284,7 @@ cout<< "   C - Dzwignia w prawo\n";
 							case'c': z1='\0', z2='\0', z3='\0', z4='0';break;
 						}
 						}
-						if(i==3)
+						if(i==3) // wprowadzenie trzeciego ruchu dzwigni
 						{
 						kolo=getch();
 						switch(kolo)
@@ -283,7 +295,7 @@ cout<< "   C - Dzwignia w prawo\n";
 							case'c': z1='\0', z2='\0', z3='\0', z4='0';yup3=1;break;
 						}
 						} 
-						if(i==4)
+						if(i==4) // wprowadzenie czwartetgo ruchu dzwigni
 						{
 						kolo=getch();
 						switch(kolo)
@@ -294,23 +306,23 @@ cout<< "   C - Dzwignia w prawo\n";
 							case'c': z1='\0', z2='\0', z3='\0', z4='0';break;
 						}
 						} 
-						if(i==4) 
+						if(i==4) // Tutaj petla sprawdza czy wprowadzone ruchy dzwigni by³y poprawne
 						{
-						if(yup1==1 && yup2==1 && yup3==1 && yup4==1)
+						if(yup1==1 && yup2==1 && yup3==1 && yup4==1) // Jesli te kombinacje sie zgadzaja to program zwraca 0 przenoszac nas do main.cpp
 						{
 							cout<<endl<<endl;	
 						}
-						else
+						else // W innym przypadku wraca nas na pocz¹tek pêtli i j¹ zeruje (i=0). Za kazdym nie powodzeniem zmienna dead zwieksza swoj¹ wartoœæ o 1
 						{
 							cout<<endl<<"Zle";
 							Sleep(900);
 							i=0;
 							yup1=0,yup2=0,yup3=0;
 							z1='0', z2='\0', z3='\0', z4='\0';
-							dead ++;
-							if (dead==3)
+							dead ++; 
+							if (dead==3) // jeœli nasza zmienna dead bêdzie mia³a wartoœæ równ¹ 3 giniemy.
 							{
-								Sleep(3000);
+								Sleep(1500);
 		        				PlaySound(TEXT("bearkill.wav"),NULL,SND_FILENAME | SND_ASYNC);
        						 	Sleep(2000);					
        					 		system("cls");
@@ -330,7 +342,7 @@ cout<< "   C - Dzwignia w prawo\n";
 }
 
 
-int instrukcja()
+int instrukcja() // instrukcja gry
 {
 	using namespace std;
 	system("cls");
@@ -354,7 +366,7 @@ int instrukcja()
 	return(0);
 }
 
-int lose()
+int lose() // ekran smierci
 {
 	using namespace std;
 	cout<<"\n\n  __     ______  _    _    _      ____   _____ ______"<<endl;
@@ -363,6 +375,7 @@ int lose()
 	cout<<"    \\   /| |  | | |  | |  | |   | |  | |\\___ \\|  __|  "<<endl;
 	cout<<"     | | | |__| | |__| |  | |___| |__| |____) | |____ "<<endl;
 	cout<<"     |_|  \\____/ \\____/   |______\\____/|_____/|______|"<<endl;
+	getch();
 	getch();
 	exit(0);
 	
