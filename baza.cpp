@@ -6,6 +6,11 @@
 #include <conio.h>
 #include <windows.h>
 
+/*! \brief
+* Funkcja menu jest menu g³ównym naszej gry w której wywo³ywane s¹ inne funkcje w zale¿noœci od 
+* wybranej opcji. Wybieranie opcji definiuje w pêtli for, wartoœæ zmiennej p.
+* \param p - zmienna, której wartoœæ jest zmieniana w pêtli for. Od niej zale¿y która funkcja zostanie wywo³ana po naciœnieciu klawisza ENTER
+ */
 int menu()
 {
 int o, p;
@@ -57,7 +62,10 @@ using namespace std;
 	if(p==4) exit(0); // dla p=4 funkcja konczy dzia³anie programu
 	goto MENU;
 	}
-	
+
+/*! \brief
+* Funkcja tworca, wyswietla liste tworcow tej gry.
+ */	
 int tworca() // tworcy gry
 {
 using namespace std;
@@ -69,14 +77,19 @@ cout << "                                 GAME PROJECT\n "<<endl;
 cout << "                             Bartlomiej Ciolkosz\n\n"<<endl;
 cout << "                                  SCRIPTING\n "<<endl;
 cout << "                             Bartlomiej Ciolkosz\n\n"<<endl;
-cout << "                                  SCREENPLAY\n"<<endl;
+cout << "                                 BETA-TESTING\n"<<endl;
+cout << "                                   Kamil Guz"<<endl;
+cout << "                                  Bartosz Bak"<<endl;
 cout << "                             Bartlomiej Ciolkosz\n\n"<<endl;
 getch();
 PlaySound(TEXT("rollup.wav"),NULL,SND_FILENAME | SND_ASYNC);
 return(0);
 }
 
-
+/*! \brief
+* Funkcja loading1 jest funkcj¹, która rysuje na naszym ekranie grafike wykonan¹ ze znaków ASCI.
+* Ma ona sprawiaæ z³udzenie, ¿e nasza gra siê doczytywuje.
+ */
 int loading1() // ekran wczyrtywania gry
 {
 		using namespace std;
@@ -125,6 +138,12 @@ int loading1() // ekran wczyrtywania gry
         PlaySound(TEXT("choice.wav"),NULL,SND_FILENAME | SND_ASYNC);
 }
 
+
+/*! \brief
+* Funkcja demo, Jest prostym demem gry.
+* Tekst jest wyœwietlany po okreœlonym czasie. Czas oczekiwania na wyœwietlenie tekstu definiuje funkcja Sleep.
+* Zabieg ten ma sprawiaæ wra¿enie, ¿e ktoœ rzeczywiscie gra w t¹ gre.
+ */
 int demo() // demo gry
 {		
 		system("cls");
@@ -155,21 +174,44 @@ int demo() // demo gry
 
 }
 
+/*! \brief
+* Funkcja instrukcja odpowiada za wyœwietlanie dostêpnych komend podczas podchodzenia do przedmiotu.
+ */
+int interakcja() // instrukcja dotycz¹ca interakcji z przedmiotem
+{
+	using namespace std;
+	cout << "\n\n Z - Inspekcja przedmiotu\n";
+	cout << " X - Uzyj/Przeszukaj rzecz\n";
+	cout << " C - Wez przedmiot\n";
+	cout << " S - Powrot\n\n";
+	
+						
+	return(0);
+	
+}
+
+/*! \brief
+* Funkcja klodka, jest jedn¹ z dwóch zagadek, których rozwi¹zanie jest konieczne do przejœcia gry.
+* Funkcja ta opiera siê na pêtli for() prosz¹c nas o podanie trzech cyfr potrzebnych do wyjœcia z pêtli
+* \return 0 przenosi nas do zamkniêtego wczesniej pomieszczenia POKOJ3
+* \return 1 przenosi nas do KORYTARZ1, jednak POKOJ3 jest nadal pomieszczeniem zamkniêtym
+ */
 int klodka() // zagadaka klodka
 {
 using namespace std;
 int k;
 char a='0', b='0', c='0',wybor;
 
-cout<<"                    Na drzwiach jest wystrugane \n\n";
+cout<<" Na drzwiach jest wystrugane \n\n";
 cout<<"                         |  8   2   6 |\n";
 cout<<"                         |  7  14   8 |\n";
-cout<<"                         | 49  -6  35 |\n\n";
-cout<<"                     Plus zmienia sie na minus\n\n";
+cout<<"                         | 49  -6  35 |\n";
+cout<<"                   Plus zmienia sie na minus\n\n";
 	if (k!=1) 
 				{
 					for (int i=1; i<=4; i++) // Petla wykonuje sie 4 razy. Przez pierwsze 3 razy naszym zadaniem jest wprowadzenie cyfr szyfru. Za czwartym razem petla sprawdza poprawnoœæ szyfru
 					{
+						if(i==1||i==2||i==3) cout<<" Mozesz odejsc od klodki wciskajac - S \n\n";
 						cout<<"                           .------------."<<endl;
 						cout<<"                          / .----------. \\"<<endl;
 						cout<<"                         / /            \\ \\"<<endl;
@@ -182,7 +224,9 @@ cout<<"                     Plus zmienia sie na minus\n\n";
 						cout<<"                '.__  | ";cout<<a;cout<<" |  _  | ";cout<<b;cout<<" |  _  | ";cout<<c;cout<<" |  '__' "<<endl;
 						cout<<"                |   '.'._.'.' '.'._.'.' '.'._.'.'   | "<<endl;
 						cout<<"                '.____'._.'_____'._.'_____'._.'____.' "<<endl;
-						cout<<"                '._________________________________.' "<<endl;
+						cout<<"                '._________________________________.' \n\n"<<endl<<endl;
+						if(i==1||i==2||i==3) cout<<" > Wprowadz cyfre do szyfru klodki \n";
+						
 						if(i==1) 
 						{
 							 a=getch();
@@ -223,7 +267,10 @@ else cout<<"Wchodzisz do Pokoju 3";
 return(0);		
 }
 
-
+/*! \brief
+* Funkcja int historyjka() wyœwietla treœæ notatki.
+* Aby j¹ zobaczyæ trzeba zebraæ dwie czêœci notatek.
+ */
 int historyjka() // Otwiera sie ona gdy zierzemy notaka1 i notatka2. Jest ona potrzebna do rozwi¹zania zagadki dŸwigna
 {
 using namespace std;
@@ -237,30 +284,37 @@ cout<< " Armia krola udala sie na polnoc. Walka tam jednak byla tragiczna w skut
 	return(0);
 }
 
-
+/*! \brief
+* Funkcja dzwignia, jest jedn¹ z dwóch zagadek, których rozwi¹zanie jest konieczne do przejœcia gry.
+* Funkcja ta opiera siê na pêtli for() prosz¹c nas o czterech po³o¿en dŸwigni potrzebnych do wyjœcia z pêtli
+* Wyjœcie z pêtli przeniesie nas do POKOJ4, jêœli w ci¹gu trzecim razem nie wyjdziemy z pêtli, gra siê koñczy.
+ */
 int dzwignia() // zagadka dzwignia 
 {
 using namespace std;
 int d, yup1, yup2, yup3, yup4, dead=0;
-char z1='0', z2, z3, z4, kolo;
-
-cout<< "\n\n  Zasada dzialania dzwigni \n";
-cout<< "   S - Dzwignia do gory\n";
-cout<< "   Z - Dzwignia w lewo\n";
-cout<< "   X - Dzwignia w dol\n";
-cout<< "   C - Dzwignia w prawo\n";
+char z1='0', z2='\0', z3='\0', z4='\0', kolo;
 
 	if (d!=1) 
 				{
 					for (int i=1; i<=5; i++) // petla ktora wykonuje sie 5 razy. Przez pierwsze 4 razy wprowadzamy polozenie dŸwigni. W ostatnim razie petla sprawdza poprawnosc wprowadzonych ruchów d¿wigni
-					{
+					{	
+						if (i==1||i==2||i==3||i==4)
+						{
+							cout<< "\n\n  Zasada dzialania dzwigni \n";
+							cout<< "   S - Dzwignia do gory\n";
+							cout<< "   Z - Dzwignia w lewo\n";
+							cout<< "   X - Dzwignia w dol\n";
+							cout<< "   C - Dzwignia w prawo";
+						}
 						cout<<"\n\n     ---"<<endl;
 						cout<<"    | ";cout<<z1;cout<<" |"<<endl;
 						cout<<" ---     ---"<<endl;
 						cout<<"|";cout<<z2;cout<<"         ";cout<<z4;cout<<"|"<<endl;
 						cout<<" ---     ---"<<endl;
 						cout<<"    | ";cout<<z3;cout<<" |"<<endl;
-						cout<<"     ---"<<endl;
+						cout<<"     --- \n"<<endl;
+						if (i==1||i==2||i==3||i==4) cout << " > Wykonaj ruch dzwignia ";
 							
 						if(i==1) // wprowadzenie pierwszego ruchu dzwigni
 						{
@@ -321,11 +375,11 @@ cout<< "   C - Dzwignia w prawo\n";
 							z1='0', z2='\0', z3='\0', z4='\0';
 							dead ++; 
 							if (dead==3) // jeœli nasza zmienna dead bêdzie mia³a wartoœæ równ¹ 3 giniemy.
-							{
+							{	
+								system("cls");
 								Sleep(1500);
 		        				PlaySound(TEXT("bearkill.wav"),NULL,SND_FILENAME | SND_ASYNC);
        						 	Sleep(2000);					
-       					 		system("cls");
        					 		cout<<"\n > Przez futryne drzwi przebijaja sie kolce, ktore cie zabijaja.";
 							  	lose();
 							}
@@ -341,7 +395,9 @@ cout<< "   C - Dzwignia w prawo\n";
 	return(0);
 }
 
-
+/*! \brief
+* Funkcja instrukcja wyœwietla na ekranie instrukcje gry.
+ */
 int instrukcja() // instrukcja gry
 {
 	using namespace std;
@@ -357,7 +413,7 @@ int instrukcja() // instrukcja gry
 	cout << "                       |   z   | |   x   | |   c   |"<<endl;
 	cout << "                       |_______| |_______| |_______|"<<endl;
 	cout << "                         /           |           \\" <<endl;
-	cout << "                        /  Uzyj/przeszukaj rzecz  \\" <<endl;
+	cout << "                        /  Uzyj/Przeszukaj rzecz  \\" <<endl;
 	cout << "                       /                         Wez przedmiot " << endl;
 	cout << "      Inspekcja przedmiotu" << endl << endl << endl << endl;
 	getch();
@@ -366,6 +422,9 @@ int instrukcja() // instrukcja gry
 	return(0);
 }
 
+/*! \brief
+* Funkcja historyjka wyœwietla ekran koñcowy gry.
+ */
 int lose() // ekran smierci
 {
 	using namespace std;

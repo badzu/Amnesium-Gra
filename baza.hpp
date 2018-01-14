@@ -10,5 +10,6 @@ int menu();
 int tworca();
 int lose();
 int historyjka();
+int interakcja();
 
 #endif
